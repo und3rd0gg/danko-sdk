@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
@@ -46,7 +48,7 @@ public class LaggedAPIUnity : MonoBehaviour
     //     Init();
     // }
 
-    internal void Init()
+    public void Init()
     {
         try
         {
@@ -132,7 +134,7 @@ public class LaggedAPIUnity : MonoBehaviour
     ///
     /// Called when ad is completed and the game should start.
     ///
-    internal void ResumeGameCallback()
+    void ResumeGameCallback()
     {
         if (OnResumeGame != null) OnResumeGame();
     }
@@ -140,7 +142,7 @@ public class LaggedAPIUnity : MonoBehaviour
     ///
     /// Called when ad starts, game/music should pause
     ///
-    internal void PauseGameCallback()
+    void PauseGameCallback()
     {
         if (OnPauseGame != null) OnPauseGame();
     }
@@ -148,7 +150,7 @@ public class LaggedAPIUnity : MonoBehaviour
     ///
     /// if reward ad is ready
     ///
-    internal void RewardAdReadyCallback()
+    void RewardAdReadyCallback()
     {
         if (onRewardAdReady != null) onRewardAdReady();
     }
@@ -156,7 +158,7 @@ public class LaggedAPIUnity : MonoBehaviour
     ///
     /// if reward is successful, give player reward
     ///
-    internal void RewardAdSuccessCallback()
+    void RewardAdSuccessCallback()
     {
         if (onRewardAdSuccess != null) onRewardAdSuccess();
     }
@@ -164,7 +166,7 @@ public class LaggedAPIUnity : MonoBehaviour
     ///
     /// if reward ad failed, no reward
     ///
-    internal void RewardAdFailCallback()
+    void RewardAdFailCallback()
     {
         if (onRewardAdFailure != null) onRewardAdFailure();
     }
