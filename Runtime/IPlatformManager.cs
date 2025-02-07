@@ -16,5 +16,6 @@ namespace DanKoSdk.Runtime
     void SwitchCallbackLogging(bool state);
     void ShowInterstitial(Action onOpen = null, Action onClose = null, Action onError = null);
     void ShowRewarded(Action onOpen = null, Action onReward = null, Action onClose = null, Action onError = null);
+    void SetHighScore(int score, string board);
   }
 }

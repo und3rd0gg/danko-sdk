@@ -26,6 +26,8 @@ namespace DanKoSdk.Runtime
     public abstract void ShowRewarded(Action onOpen = null, Action onReward = null, Action onClose = null,
       Action onError = null);
 
+    public abstract void SetHighScore(int score, string board);
+
     public abstract void Dispose();
 
     public void SwitchCallbackLogging(bool state) {

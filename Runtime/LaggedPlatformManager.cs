@@ -104,6 +104,10 @@ namespace DanKoSdk.Runtime
       LaggedAPIUnity.Instance.PlayRewardAd();
     }
 
+    public override void SetHighScore(int score, string board) {
+      LaggedAPIUnity.Instance.CallHighScore(score, board);
+    }
+
     public override void Dispose() {
       LaggedAPIUnity.OnPauseGame -= PauseGameplay;
       LaggedAPIUnity.OnResumeGame -= ResumeGameplay;
