@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using DanKoSdk.Runtime.Infrastructure;
 using UnityEngine;
+using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
 namespace DanKoSdk.Runtime
@@ -13,9 +14,11 @@ namespace DanKoSdk.Runtime
     
     private readonly string _gameId;
     private readonly LaggedAPIUnity _laggedApiUnity;
+    private GameObject _imageGo;
 
     public LaggedPlatformManager() {
       _laggedApiUnity = InstantiateLaggedApi();
+      CreateBlocker();
       SubscribeOnLaggedEvents();
     }
 
@@ -92,15 +95,22 @@ namespace DanKoSdk.Runtime
         Debug.LogWarning("Rewarded ad is already showing");
         return;
       }
+
+      SwitchBlockBackground(true);
       
-      // _adOpen = onOpen;
-      // _adClosed = onClose;
       RewardedSuccess += onOpen;
       RewardedSuccess += onReward;
       RewardedSuccess += onClose;
+      RewardedSuccess += () => SwitchBlockBackground(false);
+      
       RewardedError += onError;
       RewardedError += onClose;
+      RewardedError += () => SwitchBlockBackground(false);
       LaggedAPIUnity.Instance.PlayRewardAd();
+    }
+
+    private void SwitchBlockBackground(bool state) {
+      _imageGo.SetActive(!state);
     }
 
     public override void SetHighScore(int score, string board) {
@@ -146,6 +156,34 @@ namespace DanKoSdk.Runtime
         CheckRewardAd();
       }
       // ReSharper disable once IteratorNeverReturns
+    }
+    
+    private void CreateBlocker()
+    {
+      var canvasGo = new GameObject("[LaggedCanvas]");
+      Object.DontDestroyOnLoad(canvasGo);
+      var canvas = canvasGo.AddComponent<Canvas>();
+      canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+      var canvasScaler = canvasGo.AddComponent<CanvasScaler>();
+      canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+      canvasScaler.screenMatchMode = CanvasScaler.ScreenMatchMode.Expand;
+      
+      canvasGo.AddComponent<GraphicRaycaster>();
+
+      _imageGo = new GameObject("dimmer");
+      _imageGo.transform.SetParent(canvasGo.transform, false);
+
+      var image = _imageGo.AddComponent<Image>();
+      image.color = new Color32(134, 49, 255, 152);
+
+      var canvasGroup = _imageGo.AddComponent<CanvasGroup>();
+      canvasGroup.blocksRaycasts = true;
+
+      var rectTransform = image.GetComponent<RectTransform>();
+      rectTransform.anchorMin = Vector2.zero;
+      rectTransform.anchorMax = Vector2.one;
+      rectTransform.offsetMin = Vector2.zero;
+      rectTransform.offsetMax = Vector2.zero;
     }
   }
 }
