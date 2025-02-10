@@ -111,7 +111,7 @@ namespace DanKoSdk.Runtime
     }
 
     private void SwitchBlockBackground(bool state) {
-      _imageGo.SetActive(!state);
+      _imageGo.SetActive(state);
     }
 
     public override void SetHighScore(int score, string board) {
