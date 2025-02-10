@@ -31,14 +31,12 @@ namespace DanKoSdk.Runtime
       LogCallbackIfAppropriate(nameof(OnRewardAdFailure));
       IsShowingRewarded = false;
       RewardedError?.Invoke();
-      ClearDelegates();
     }
 
     private void OnRewardAdSuccess() {
       LogCallbackIfAppropriate(nameof(OnRewardAdSuccess));
       IsRewardedAvailable = false;
       RewardedSuccess?.Invoke();
-      ClearDelegates();
     }
 
     public override Platform Platform => Platform.Lagged;
@@ -65,7 +63,6 @@ namespace DanKoSdk.Runtime
     protected override void ResumeGameplay() {
       base.ResumeGameplay();
       ADClosed?.Invoke();
-      ClearDelegates();
     }
 
     private void ClearDelegates() {
@@ -77,6 +74,7 @@ namespace DanKoSdk.Runtime
 
     public override void ShowInterstitial(Action onOpen = null, Action onClose = null, Action onError = null) {
       LogCallbackIfAppropriate(nameof(ShowInterstitial));
+      ClearDelegates();
       
       ADOpen = onOpen;
       ADClosed = onClose;
@@ -86,6 +84,7 @@ namespace DanKoSdk.Runtime
     public override void ShowRewarded(Action onOpen = null, Action onReward = null, Action onClose = null,
       Action onError = null) {
       LogCallbackIfAppropriate(nameof(ShowRewarded));
+      ClearDelegates();
       
       CheckRewardAd();
 
