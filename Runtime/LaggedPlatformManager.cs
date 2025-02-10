@@ -19,6 +19,7 @@ namespace DanKoSdk.Runtime
     public LaggedPlatformManager() {
       _laggedApiUnity = InstantiateLaggedApi();
       CreateBlocker();
+      SwitchBlockBackground(false);
       SubscribeOnLaggedEvents();
     }
 
