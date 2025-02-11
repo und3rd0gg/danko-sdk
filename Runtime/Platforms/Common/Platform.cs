@@ -1,4 +1,4 @@
-namespace DanKoSdk.Runtime
+namespace DanKoSdk.Runtime.Platforms.Common
 {
   public enum Platform
   {

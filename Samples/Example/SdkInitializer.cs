@@ -1,9 +1,11 @@
 ﻿using DanKoSdk.Runtime.Infrastructure;
+using DanKoSdk.Runtime.Platforms.Common;
+using DanKoSdk.Runtime.Platforms.Lagged;
 using UnityEngine;
 
-namespace DanKoSdk.Runtime
+namespace DanKoSdk.Samples.Example
 {
-  public class Sdk : MonoSingleton<Sdk>
+  public class SdkInitializer : MonoSingleton<SdkInitializer>
   {
     [SerializeField] private Platform _platform;
   

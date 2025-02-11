@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using DanKoSdk.Runtime.Infrastructure;
+using DanKoSdk.Runtime.Platforms.Common;
+using DanKoSdk.Runtime.Providers.Lagged;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
-namespace DanKoSdk.Runtime
+namespace DanKoSdk.Runtime.Platforms.Lagged
 {
   public class LaggedPlatformManager : PlatformManagerBase
   {

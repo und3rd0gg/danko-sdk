@@ -1,23 +1,26 @@
+using DanKoSdk.Samples.Example;
 using UnityEngine;
-using DanKoSdk.Runtime;
 
-public class PlaytestingSample : MonoBehaviour
+namespace DanKoSdk.Samples.Playtesting
 {
-    public void ShowRewardedAd() {
-        Debug.Log("reward3");
+    public class PlaytestingSample : MonoBehaviour
+    {
+        public void ShowRewardedAd() {
+            Debug.Log("reward3");
         
-        Sdk.Instance.PlatformManager.ShowRewarded(() => {
-            Debug.Log("open");
-        }, () => {
-            Debug.Log("reward");
-        }, () => {
-            Debug.Log("close");
-        }, () => {
-            Debug.Log("error");
-        });
-    }
+            SdkInitializer.Instance.PlatformManager.ShowRewarded(() => {
+                Debug.Log("open");
+            }, () => {
+                Debug.Log("reward");
+            }, () => {
+                Debug.Log("close");
+            }, () => {
+                Debug.Log("error");
+            });
+        }
 
-    public void ShowInter() {
-        Sdk.Instance.PlatformManager.ShowInterstitial();
+        public void ShowInter() {
+            SdkInitializer.Instance.PlatformManager.ShowInterstitial();
+        }
     }
 }

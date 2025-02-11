@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace DanKoSdk.Runtime
+namespace DanKoSdk.Runtime.Platforms.Common
 {
   public abstract class PlatformManagerBase : IPlatformManager
   {
@@ -36,7 +36,7 @@ namespace DanKoSdk.Runtime
 
     protected void LogCallbackIfAppropriate(string message) {
       if (CallbackLoggingEnabled) {
-        Debug.Log($"<color=#46FF00>DanKoSdk: {message}</color>");
+        Debug.Log($"DANKOSDK: {message}");
       }
     }
 

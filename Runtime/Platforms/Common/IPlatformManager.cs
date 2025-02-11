@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 
-namespace DanKoSdk.Runtime
+namespace DanKoSdk.Runtime.Platforms.Common
 {
   public interface IPlatformManager : IDisposable
   {
