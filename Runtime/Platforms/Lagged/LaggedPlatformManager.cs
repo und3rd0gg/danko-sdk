@@ -58,8 +58,13 @@ namespace DanKoSdk.Runtime.Platforms.Lagged
       IsRewardedAvailable = false;
       _laggedApiUnity.Init();
       IsInitialized = true;
-      CoroutineRunner.Instance.StartCoroutine(CheckRewardAdRoutine());
+      CoroutineRunner.Instance.StartCoroutine(StartCheckRewardAdLoopRoutine());
       yield break;
+    }
+
+    private IEnumerator StartCheckRewardAdLoopRoutine() {
+      yield return new WaitForSeconds(3);
+      CoroutineRunner.Instance.StartCoroutine(CheckRewardAdRoutine());
     }
 
     protected override void PauseGameplay() {
