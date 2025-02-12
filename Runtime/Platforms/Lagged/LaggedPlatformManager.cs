@@ -94,11 +94,12 @@ namespace DanKoSdk.Runtime.Platforms.Lagged
       
       CheckRewardAd();
 
-      if (IsShowingRewarded) {
-        Debug.LogWarning("Rewarded ad is already showing");
+      if (IsShowingRewarded || !IsRewardedAvailable) {
+        Debug.LogWarning("Rewarded ad is not available!");
         return;
       }
 
+      IsShowingRewarded = true;
       SwitchBlockBackground(true);
       
       RewardedSuccess += onOpen;
