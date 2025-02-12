@@ -156,8 +156,8 @@ namespace DanKoSdk.Runtime.Platforms.Lagged
     private IEnumerator CheckRewardAdRoutine() {
       while (true) {
         yield return new WaitWhile(() => IsRewardedAvailable);
-        yield return new WaitForSeconds(3);
         CheckRewardAd();
+        yield return new WaitForSeconds(3);
       }
       // ReSharper disable once IteratorNeverReturns
     }

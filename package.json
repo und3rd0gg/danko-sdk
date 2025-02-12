@@ -1,6 +1,6 @@
 {
   "name": "com.danko.sdk",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "displayName": "DanKo SDK",
   "type": "library",
   "unity": "2022.3",
