@@ -42,6 +42,7 @@ namespace DanKoSdk.Runtime.Platforms.Lagged
     private void OnRewardAdSuccess() {
       LogCallbackIfAppropriate(nameof(OnRewardAdSuccess));
       IsRewardedAvailable = false;
+      IsShowingRewarded = false;
       RewardedSuccess?.Invoke();
     }
 
