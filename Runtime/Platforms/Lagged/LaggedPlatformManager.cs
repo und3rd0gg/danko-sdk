@@ -53,10 +53,10 @@ namespace DanKoSdk.Runtime.Platforms.Lagged
     public override IEnumerator Init(params object[] payload) {
       _laggedApiUnity.DEV_ID = DEVELOPER_ID;
       _laggedApiUnity.PUBLISHER_ID = ADSENSE_ID;
+      CanShowSticky = false;
       IsRewardedAvailable = false;
       _laggedApiUnity.Init();
       IsInitialized = true;
-      CanShowSticky = false;
       CoroutineRunner.Instance.StartCoroutine(CheckRewardAdRoutine());
       yield break;
     }
@@ -92,10 +92,9 @@ namespace DanKoSdk.Runtime.Platforms.Lagged
       LogCallbackIfAppropriate(nameof(ShowRewarded));
       ClearDelegates();
       
-      CheckRewardAd();
-
       if (IsShowingRewarded || !IsRewardedAvailable) {
         Debug.LogWarning("Rewarded ad is not available!");
+        onError?.Invoke();
         return;
       }
 
