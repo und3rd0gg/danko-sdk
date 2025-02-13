@@ -69,11 +69,13 @@ namespace DanKoSdk.Runtime.Platforms.Lagged
 
     protected override void PauseGameplay() {
       base.PauseGameplay();
+      SwitchBlockBackground(true);
       ADOpen?.Invoke();
     }
 
     protected override void ResumeGameplay() {
       base.ResumeGameplay();
+      SwitchBlockBackground(false);
       ADClosed?.Invoke();
     }
 
