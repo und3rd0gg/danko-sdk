@@ -1,8 +1,11 @@
 ﻿using DanKoSdk.Runtime.Infrastructure;
 using DanKoSdk.Runtime.Platforms.Common;
 using DanKoSdk.Runtime.Platforms.Lagged;
-using Sirenix.OdinInspector;
 using UnityEngine;
+
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#endif
 
 namespace DanKoSdk.Samples.Example
 {
@@ -16,7 +19,7 @@ namespace DanKoSdk.Samples.Example
 
     private bool IsNotLagged => _platform != Platform.Lagged;
 #else
-    [SerializeField] [HideIf(nameof(IsNotLagged))]
+    [SerializeField]
     private string _gameKey;
 #endif
 
