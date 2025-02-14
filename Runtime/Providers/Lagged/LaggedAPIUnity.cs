@@ -35,17 +35,17 @@ public class LaggedAPIUnity : MonoBehaviour
     [DllImport("__Internal")]
     private static extern void SDK_PlayRewardAd();
 
-    void Awake()
-    {
-        if (LaggedAPIUnity.Instance == null)
-            LaggedAPIUnity.Instance = this;
-        else
-            Destroy(this);
-
-        DontDestroyOnLoad(this);
-
-        Init();
-    }
+    // void Awake()
+    // {
+    //     if (LaggedAPIUnity.Instance == null)
+    //         LaggedAPIUnity.Instance = this;
+    //     else
+    //         Destroy(this);
+    //
+    //     DontDestroyOnLoad(this);
+    //
+    //     Init();
+    // }
 
     internal void Init()
     {
