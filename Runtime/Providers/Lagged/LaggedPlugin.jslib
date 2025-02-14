@@ -1,9 +1,8 @@
 ﻿var functions = {
 
-  SDK_Init: function(devID,pubID) {
+  SDK_Init: function(gameKey) {
 
-    devID = UTF8ToString(devID);
-    pubID = UTF8ToString(pubID);
+    gameKey = UTF8ToString(gameKey);
 
     (function(d, s, id) {
       var js,
@@ -13,10 +12,10 @@
       js.id = id;
 
       js.onload=function(){
-        LaggedAPI.init(devID, pubID);
+        LaggedAPI.init(gameKey);
       }
 
-      js.src = "//lagged.com/api/rev-share/lagged.js";
+      js.src = "//lagged.com/api/rev-share/lagged-gam.js";
 
       fjs.parentNode.insertBefore(js, fjs);
     })(document, "script", "lagged-jssdk");

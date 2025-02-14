@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using DanKoSdk.Runtime.Infrastructure;
 using DanKoSdk.Runtime.Platforms.Common;
-using DanKoSdk.Runtime.Providers.Lagged;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
@@ -11,9 +10,6 @@ namespace DanKoSdk.Runtime.Platforms.Lagged
 {
   public class LaggedPlatformManager : PlatformManagerBase
   {
-    private const string DEVELOPER_ID = "lagdev_14474";
-    private const string ADSENSE_ID = "ca-pub-55566677781";
-    
     private readonly string _gameId;
     private readonly LaggedAPIUnity _laggedApiUnity;
     private GameObject _imageGo;
@@ -52,8 +48,8 @@ namespace DanKoSdk.Runtime.Platforms.Lagged
     public override bool IsRewardedAvailable { get; protected set; }
 
     public override IEnumerator Init(params object[] payload) {
-      _laggedApiUnity.DEV_ID = DEVELOPER_ID;
-      _laggedApiUnity.PUBLISHER_ID = ADSENSE_ID;
+      var gameKey = (string)payload[0];
+      _laggedApiUnity.GAME_KEY = gameKey;
       CanShowSticky = false;
       IsRewardedAvailable = false;
       _laggedApiUnity.Init();

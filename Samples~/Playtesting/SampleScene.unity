@@ -655,10 +655,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1021599527}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2f40dc8f5b64ad896a41427944200f3, type: 3}
+  m_Script: {fileID: 11500000, guid: 1678e527c0dc47cdbe850a965e20aa89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _platform: 1
+  _gameKey: DanKo
 --- !u!1 &1022517151
 GameObject:
   m_ObjectHideFlags: 0
